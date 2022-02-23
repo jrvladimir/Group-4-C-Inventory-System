@@ -89,7 +89,7 @@ display_inventory(struct element product[1000], int s){
   		printf("description: %s ", product[i].description);
   		printf("quantity: %d ", product[i].quantity);
   		printf("date: %s ", product[i].date);
-  		printf("price: %f ", product[i].price);
+  		printf("price: %.2f ", product[i].price);
         printf("\n");  
     } 
 
