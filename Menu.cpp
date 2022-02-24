@@ -3,8 +3,6 @@
 #include <string.h>
 #include <ctype.h>
 
-
-
 void Menu();
 void Add_Inventory();
 void Update_Inventory();
@@ -88,18 +86,14 @@ void Choice(int mod){
    		}
 	}
 }
-
 int main()
 {
-
     int a;
     for(a=0;;a++){
        Menu();
     }
-
     return 0;
 }
-
 void Menu()      
 {
     printf("MAIN MENU \n");
@@ -114,7 +108,6 @@ void Menu()
     printf("Please input choice: ");
     int module = 0;
     Choice(module);
-    
 }
 void Add_Inventory(){
     printf("ADD INVENTORY \n");
@@ -125,8 +118,7 @@ void Add_Inventory(){
     printf("*******************************\n\n");
     printf("Please input choice: ");
     int module = 1;
-	Choice(module);
-	
+	Choice(module);	
 }
 void Update_Inventory()      
 {
@@ -164,4 +156,3 @@ void Search_Item()
     int module = 4;
     Choice(module);
 }
-
