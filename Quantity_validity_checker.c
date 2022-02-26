@@ -24,7 +24,7 @@ int main(){
 		}
 		
 		
-		
+		//checks if the input is float
 		while (userInput[i++] != '\0'){
 			if (userInput[i] == '.'){
 				flag = 1;
