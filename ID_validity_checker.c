@@ -8,16 +8,16 @@ int main(){
 	while (num == 0) {
 		printf("Inventory ID (Enter a five digit interger):");
 		fgets(userInput, 63, stdin);
-		
-		if ( sscanf(userInput, "%d", &num) != 1 ){
-			num = 0;
-			//does not accept other data types
+				
+		if( strlen(userInput) != 6 ){
+			//only accepts 5 digit integers and then null 
 			printf("Invalid input.\n");
 			continue;
 		}
 		
-		if( strlen(userInput) != 6 ){
-			//only accepts 5 digit integers and then null 
+		if ( sscanf(userInput, "%d", &num) != 1 ){
+			num = 0;
+			//does not accept other data types
 			printf("Invalid input.\n");
 			continue;
 		}
