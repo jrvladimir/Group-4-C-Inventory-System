@@ -35,6 +35,7 @@ int main(){
 		
 		if ( num < 1 || num > 1000000 || flag == 1 ){
 			num = 0;
+			flag = 0;
 			printf("Invalid input.\n");
 			continue;
 		}else{
