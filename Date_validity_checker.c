@@ -81,7 +81,7 @@ int main(){
 			printf("Invalid input.\n");
 			continue;	
 		}else{
-			sprintf(date, "%d-%d-%d", year, month, day);
+			sprintf(date, "%d-%02d-%02d", year, month, day);
 			printf("%s", date);
 			valid = 1;
 		}
