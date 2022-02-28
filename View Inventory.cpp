@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <conio.h>>
+#include <conio.h>
 #include <stdlib.h>
 #include <string.h>
 #define DELIMITER "\";,\n"
@@ -12,7 +12,7 @@ struct element{
     float price;
 };
 
-count_inventory(){
+int count_inventory(){
 	FILE* fp = fopen("Inventory_ST_NoBOM.csv", "r");
 	 if (!fp) {
         // Error in file opening
@@ -78,7 +78,7 @@ into_structure(struct element product[1000]){
             row++;
         }
         fclose(fp);
-
+	return 0;
 }
 
 display_inventory(struct element product[1000], int s){
@@ -105,7 +105,7 @@ display_inventory(struct element product[1000], int s){
   		printf("    %.2f", product[i].price);
         printf("\n\n");  
     } 
-
+	return 0;
 }
 
 sort_inventory(struct element product[1000], int s)
@@ -125,6 +125,7 @@ sort_inventory(struct element product[1000], int s)
             } 
         }
     }
+    return 0;
 }
 
 
