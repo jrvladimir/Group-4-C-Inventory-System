@@ -8,5 +8,5 @@ void* choice(int mod);
 void* menu();
 void* add_inventory();
 void* update_inventory();
-void* view_item();
-void* search_item();
+void* view_inventory();
+void* search_inventory();
