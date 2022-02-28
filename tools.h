@@ -10,3 +10,4 @@ void* add_inventory();
 void* update_inventory();
 void* view_inventory();
 void* search_inventory();
+int* Quantity_validity_checker(char userInput[64]);

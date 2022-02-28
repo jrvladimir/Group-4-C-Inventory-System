@@ -4,8 +4,8 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = add_inventory.o choice.o main.o menu.o search_inventory.o update_inventory.o view_inventory.o
-LINKOBJ  = add_inventory.o choice.o main.o menu.o search_inventory.o update_inventory.o view_inventory.o
+OBJ      = add_inventory.o choice.o main.o menu.o search_inventory.o update_inventory.o view_inventory.o Quantity_validity_checker.o
+LINKOBJ  = add_inventory.o choice.o main.o menu.o search_inventory.o update_inventory.o view_inventory.o Quantity_validity_checker.o
 LIBS     = -L"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib" -L"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/lib" -static-libgcc
 INCS     = -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include"
 CXXINCS  = -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++"
@@ -44,3 +44,6 @@ update_inventory.o: update_inventory.c
 
 view_inventory.o: view_inventory.c
 	$(CC) -c view_inventory.c -o view_inventory.o $(CFLAGS)
+
+Quantity_validity_checker.o: Quantity_validity_checker.c
+	$(CC) -c Quantity_validity_checker.c -o Quantity_validity_checker.o $(CFLAGS)
