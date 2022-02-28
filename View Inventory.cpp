@@ -83,14 +83,27 @@ into_structure(struct element product[1000]){
 
 display_inventory(struct element product[1000], int s){
 	int i;
+	printf("VIEW INVENTORY\n");
+	printf("ID     DESCRIPTION                      QTY    DATE          PRICE\n");
+	
     for (i = 0; i < s; i++)
     {
-        printf("id: %d ", product[i].id);
-  		printf("description: %s ", product[i].description);
-  		printf("quantity: %d ", product[i].quantity);
-  		printf("date: %s ", product[i].date);
-  		printf("price: %.2f ", product[i].price);
-        printf("\n");  
+        printf("%d", product[i].id);
+  		printf("  %s", product[i].description);
+  		printf("   %d", product[i].quantity);
+  		if (product[i].quantity < 10){
+  			printf("   ");
+		}else if (product[i].quantity < 100){
+  			printf("  ");
+		}else if (product[i].quantity < 1000){
+  			printf(" ");
+		}
+  		printf("   %s", product[i].date);
+  		if (strlen(product[i].date) < 3){
+  			printf("         ");
+		}
+  		printf("    %.2f", product[i].price);
+        printf("\n\n");  
     } 
 
 }
@@ -117,9 +130,16 @@ sort_inventory(struct element product[1000], int s)
 
 int main()
 {
-	int count = count_inventory();
-	struct element list[1000];
-	into_structure(list);
-	sort_inventory(list,count);
-	display_inventory(list,count);
+	FILE* fp = fopen("Inventory_ST_NoBOM.csv", "r");
+	if (!fp) {
+        // Error in file opening
+        printf("File is not available\n");
+    }else{
+    	int count = count_inventory();
+		struct element list[1000];
+		into_structure(list);
+		sort_inventory(list,count);
+		display_inventory(list,count);
+	}
+
 }
