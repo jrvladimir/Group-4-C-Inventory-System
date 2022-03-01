@@ -4,6 +4,8 @@
 #include <ctype.h>
 #include "tools.h"
 
+
+
 void inventory_menu(){
 	printf("ADD INVENTORY \n");
     printf("*******************************\n");
@@ -115,11 +117,12 @@ void* add_inventory(){
     	inventory_menu();
 	}else if (ID_check = 1 && DESC_check == 1 && QTY_check == 1 && DATE_check == 1 && PRICE_check == 1){
     	printf("Item Added.");
-    	fprintf(fp, "\n%s, %s, %s, -, %.2f", addID, addDescription, addQuantity, Price);
+    	fprintf(fp, addID, addDescription, addQuantity, "-", Price);
+
 		inventory_menu();
 	}else if (ID_check = 1 && DESC_check == 1 && QTY_check == 1 && DATE_check == 2 && PRICE_check == 1){
     	printf("Item Added.");
-    	fprintf(fp, "\n%s, %s, %s, %s-%02d-%02d, %.2f", addID, addDescription, addQuantity, addYear, Month, Day, Price);
+    	fprintf(fp, "%s,%s,%s,%s-%02d-%02d,%.2f", addID, addDescription, addQuantity, addYear, Month, Day, Price);
 		inventory_menu();
     }
     fclose(fp);
