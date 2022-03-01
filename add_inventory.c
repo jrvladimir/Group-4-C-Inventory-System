@@ -18,6 +18,16 @@ void inventory_menu(){
 	choice(module);	
 }
 
+void inventory_add(){
+	printf("ADD INVENTORY \n");
+    printf("*******************************\n");
+    printf("*[X] Exit                     *\n");
+    printf("*******************************\n\n");
+    printf("Please input choice: ");
+    int module = 6;
+	choice(module);	
+}
+
 
 void* add_inventory(){
 
@@ -76,7 +86,7 @@ void* add_inventory(){
 	}else{
 		printf("Valid Description.");
 		DESC_check = 1;
-		sscanf(addDescription, "%s", &Description);
+
 	}
     
     if ( Quantity_validity_checker(addQuantity) == 0 ){
@@ -115,16 +125,22 @@ void* add_inventory(){
 		sscanf(addPrice, "%f", &Price);
 	}
     
+    addID[strlen(addID) - 1] = '\0';
+    addDescription[strlen(addDescription) - 1] = '\0';
+    addQuantity[strlen(addQuantity) - 1] = '\0';
+    addYear[strlen(addYear) - 1] = '\0';
+
+    
     if (ID_check = 0 || DESC_check == 0 || QTY_check == 0 || DATE_check == 0 || PRICE_check == 0){
     	inventory_menu();
 	}else if (ID_check = 1 && DESC_check == 1 && QTY_check == 1 && DATE_check == 1 && PRICE_check == 1){
     	printf("Item Added.");
     	fprintf(fp, "\n%s,%s,%s,-,%.2f", 
-			ID, Description, Quantity, Price);
-		inventory_menu();
+			addID, addDescription, addQuantity, Price);
+		inventory_add();
 	}else if (ID_check = 1 && DESC_check == 1 && QTY_check == 1 && DATE_check == 2 && PRICE_check == 1){
     	printf("Item Added.");
-    	fprintf(fp, "%s, %s, %s, %s-%02d-%02d, %.2f",
+    	fprintf(fp, "\n%s,%s,%s,%s-%02d-%02d,%.2f",
 			addID, addDescription, addQuantity, addYear, Month, Day, Price);
 		inventory_menu();
     }

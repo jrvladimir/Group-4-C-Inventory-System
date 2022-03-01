@@ -66,10 +66,16 @@ void* choice(int mod){
 					continue;
 				}
        		case 'm':
-      			//Menu();
-      			printf("\n");
-      			menu();
-       			break;
+       			if (mod != 6){
+      				//Menu();
+      				printf("\n");
+      				menu();
+       				break;
+       			}else{
+       				printf("\nError! Wrong Number/Character is Entered\nPlease Try Again\n\n");
+      				printf("Please input choice: ");
+					continue;
+				}
 			case 'x':
       			printf("\n*** Thanks for using the program! Goodbye. *");
                 exit(1); 
