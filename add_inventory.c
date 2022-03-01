@@ -69,12 +69,14 @@ void* add_inventory(){
 		}
 	}
 	
+	
 	if ( Description_validity_checker(addDescription) == 0 ){
     	printf("Invalid Description.");
     	DESC_check = 0;
 	}else{
 		printf("Valid Description.");
 		DESC_check = 1;
+		sscanf(addDescription, "%s", &Description);
 	}
     
     if ( Quantity_validity_checker(addQuantity) == 0 ){
@@ -102,7 +104,7 @@ void* add_inventory(){
 		sscanf(addMonth, "%d", &Month);
 	}
 	
-	int Price;
+	float Price;
 	
 	if ( Price_validity_checker(addPrice) == 0 ){
     	printf("Invalid Price.");
@@ -117,8 +119,8 @@ void* add_inventory(){
     	inventory_menu();
 	}else if (ID_check = 1 && DESC_check == 1 && QTY_check == 1 && DATE_check == 1 && PRICE_check == 1){
     	printf("Item Added.");
-    	fprintf(fp, "\n%s, %s, %s, -, %.2f", 
-			addID, addDescription, addQuantity, Price);
+    	fprintf(fp, "\n%s,%s,%s,-,%.2f", 
+			ID, Description, Quantity, Price);
 		inventory_menu();
 	}else if (ID_check = 1 && DESC_check == 1 && QTY_check == 1 && DATE_check == 2 && PRICE_check == 1){
     	printf("Item Added.");
