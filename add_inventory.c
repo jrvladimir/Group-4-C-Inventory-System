@@ -112,7 +112,7 @@ void* add_inventory(){
 	}else{
 		printf("Valid Price.");
 		PRICE_check = 1;
-		sscanf(addPrice, "%.2f", &Price);
+		sscanf(addPrice, "%f", &Price);
 	}
     
     if (ID_check = 0 || DESC_check == 0 || QTY_check == 0 || DATE_check == 0 || PRICE_check == 0){
