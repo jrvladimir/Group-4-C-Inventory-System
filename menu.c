@@ -10,7 +10,7 @@ void* menu(){
     printf("*[A] Add Inventory            *\n");
     printf("*[B] Update Inventory         *\n");
     printf("*[C] View Inventory           *\n");
-    printf("*[D] Search Inentory          *\n");
+    printf("*[D] Search Inventory         *\n");
     printf("*[M] Display Main Menu Again  *\n");
     printf("*[X] Exit                     *\n");
     printf("*******************************\n\n");

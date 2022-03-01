@@ -4,15 +4,15 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = add_inventory.o choice.o main.o menu.o search_inventory.o update_inventory.o view_inventory.o Quantity_validity_checker.o
-LINKOBJ  = add_inventory.o choice.o main.o menu.o search_inventory.o update_inventory.o view_inventory.o Quantity_validity_checker.o
+OBJ      = add_inventory.o choice.o main.o menu.o search_inventory.o update_inventory.o view_inventory.o Quantity_validity_checker.o Price_validity_checker.o Date_validity_checker.o Expiry_date_checker.o ID_validity_checker.o Description_validity_checker.o "ID_duplication\ checker.o"
+LINKOBJ  = add_inventory.o choice.o main.o menu.o search_inventory.o update_inventory.o view_inventory.o Quantity_validity_checker.o Price_validity_checker.o Date_validity_checker.o Expiry_date_checker.o ID_validity_checker.o Description_validity_checker.o "ID_duplication checker.o"
 LIBS     = -L"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib" -L"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/lib" -static-libgcc
 INCS     = -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include"
 CXXINCS  = -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++"
 BIN      = Inventory.exe
 CXXFLAGS = $(CXXINCS) 
 CFLAGS   = $(INCS) 
-DEL      = C:\Program Files (x86)\Embarcadero\Dev-Cpp\DevCpp.exe INTERNAL_DEL
+DEL      = C:\Program Files (x86)\Embarcadero\Dev-Cpp\devcpp.exe INTERNAL_DEL
 
 .PHONY: all all-before all-after clean clean-custom
 
@@ -47,3 +47,21 @@ view_inventory.o: view_inventory.c
 
 Quantity_validity_checker.o: Quantity_validity_checker.c
 	$(CC) -c Quantity_validity_checker.c -o Quantity_validity_checker.o $(CFLAGS)
+
+Price_validity_checker.o: Price_validity_checker.c
+	$(CC) -c Price_validity_checker.c -o Price_validity_checker.o $(CFLAGS)
+
+Date_validity_checker.o: Date_validity_checker.c
+	$(CC) -c Date_validity_checker.c -o Date_validity_checker.o $(CFLAGS)
+
+Expiry_date_checker.o: Expiry_date_checker.c
+	$(CC) -c Expiry_date_checker.c -o Expiry_date_checker.o $(CFLAGS)
+
+ID_validity_checker.o: ID_validity_checker.c
+	$(CC) -c ID_validity_checker.c -o ID_validity_checker.o $(CFLAGS)
+
+Description_validity_checker.o: Description_validity_checker.c
+	$(CC) -c Description_validity_checker.c -o Description_validity_checker.o $(CFLAGS)
+
+"ID_duplication\ checker.o": ID_duplication\ checker.c
+	$(CC) -c "ID_duplication checker.c" -o "ID_duplication checker.o" $(CFLAGS)

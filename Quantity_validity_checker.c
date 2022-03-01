@@ -17,6 +17,8 @@ int* Quantity_validity_checker(char userInput[64]){
 		}
 	}
 	
+
+	
 	if( strlen(userInput) < 2 || strlen(userInput) > 8 ){
 		//doesn't accept empty input or greater than 7 digits
 		quantity_output = 0;

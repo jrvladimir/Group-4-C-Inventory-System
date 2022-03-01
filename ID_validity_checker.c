@@ -1,49 +1,23 @@
-#include "stdio.h"
-#include "string.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include "tools.h"
 
-int main(){
-	char userInput[64];
+int* ID_validity_checker(char userInput[64]){
 	int num = -1;
-	char inventory_id[64];
-	
-	while (num == -1) {
-		printf("Inventory ID (Enter a five digit interger):");
-		fgets(userInput, 63, stdin);
+	int ID_output = 0;
 				
 		if( strlen(userInput) != 6 ){
 			//only accepts 5 digit integers and then null 
-			printf("Invalid input.\n");
-			continue;
-		}
-		
-		if ( sscanf(userInput, "%d", &num) != 1 ){
-			num = -1;
+			ID_output = 0;
+		}else if ( sscanf(userInput, "%d", &num) != 1 ){
 			//does not accept other data types
-			printf("Invalid input.\n");
-			continue;
-		}
-		
-		if ( num < 0 || num > 99999 ){
-			num = -1;
-			printf("Invalid input.\n");
-			continue;
-		}else if ( num >= 0 && num <= 9){
-			sprintf(inventory_id, "0000%d", num);
-			printf("Valid Inventory ID:%s", inventory_id);
-		}else if ( num >= 10 && num <= 99){
-			sprintf(inventory_id, "000%d", num);
-			printf("Valid Inventory ID:%s", inventory_id);	
-		}else if ( num >= 100 && num <= 999){
-			sprintf(inventory_id, "00%d", num);
-			printf("Valid Inventory ID:%s", inventory_id);
-		}else if ( num >= 1000 && num <= 9999){
-			sprintf(inventory_id, "0%d", num);
-			printf("Valid Inventory ID:%s", inventory_id);
+			ID_output = 0;
+		}else if ( num < 0 || num > 99999 ){
+			ID_output = 0;
 		}else{
-			sprintf(inventory_id, "%d", num);
-			printf("Valid Inventory ID:%s", inventory_id);
+			ID_output = 1;
 		}
-	}
-	
-	return 0;	
+	return ID_output;	
 }
