@@ -22,7 +22,7 @@ void inventory_menu(){
 void* add_inventory(){
 
 	
-	FILE* fp = fopen("Inventory_ST_NoBOM.csv", "a");
+	FILE* fp = fopen("Inventory_ST_NoBOM.csv", "a+");
 	 if (!fp) {
         // Error in file opening
         printf("Can't open file\n");
@@ -117,8 +117,8 @@ void* add_inventory(){
     	inventory_menu();
 	}else if (ID_check = 1 && DESC_check == 1 && QTY_check == 1 && DATE_check == 1 && PRICE_check == 1){
     	printf("Item Added.");
-    	fprintf(fp, addID, addDescription, addQuantity, "-", Price);
-
+    	fprintf(fp, "\n%s,%s,%s,-,%.2f", 
+			addID, addDescription, addQuantity, Price);
 		inventory_menu();
 	}else if (ID_check = 1 && DESC_check == 1 && QTY_check == 1 && DATE_check == 2 && PRICE_check == 1){
     	printf("Item Added.");
