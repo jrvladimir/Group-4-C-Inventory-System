@@ -260,7 +260,8 @@ void* update_inventory(){
     	addDescription[strlen(addDescription) - 1] = '\0';
     	addQuantity[strlen(addQuantity) - 1] = '\0';
     	addYear[strlen(addYear) - 1] = '\0';
-
+		
+		sscanf(addQuantity, "%d", &Quantity);
     
     	if (DESC_check == 0 || QTY_check == 0 || DATE_check == 0 || PRICE_check == 0){
     		update_menu();
