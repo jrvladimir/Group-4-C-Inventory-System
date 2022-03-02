@@ -231,7 +231,10 @@ void* update_inventory(){
 				printf("Valid Quantity.");
 				QTY_check = 1;
 			}
+		
+		
 
+		
    		if ( Date_validity_checker(addMonth, addDay, addYear) == 0 ){
     		if (Expiry_date_checker(addMonth, addDay, addYear) == 1){
     			printf("No Expiration.");
@@ -271,7 +274,7 @@ void* update_inventory(){
 			inventory_add();
 		}else if (DESC_check == 1 && QTY_check == 1 && DATE_check == 2 && PRICE_check == 1){
     		printf("Item Updated.");
-    		sprintf(Date, "%s-%02d-%02d", addYear, Day, Month);
+    		sprintf(Date, "%s-%02d-%02d", addYear, Month, Day);
 			copy_inventory(list,count,ID_three,addDescription,Quantity,Date,Price);
 			inventory_add();
     	}

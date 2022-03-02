@@ -142,7 +142,7 @@ void* add_inventory(){
     	printf("Item Added.");
     	fprintf(fp, "\n%s,%s,%s,%s-%02d-%02d,%.2f",
 			addID, addDescription, addQuantity, addYear, Month, Day, Price);
-		inventory_menu();
+		inventory_add();
     }
     fclose(fp);
 } 

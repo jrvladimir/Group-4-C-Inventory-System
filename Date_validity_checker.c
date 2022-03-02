@@ -5,9 +5,24 @@
 #include "tools.h"
 
 int* Date_validity_checker(char monthInput[64], char dayInput[64], char yearInput[64]){
-	int date_output = 0;
+	int date_output;
 	int day, month, year;
-	int leap_year = 0;
+	int leap_year, year_leap = 0;
+	printf("%s", monthInput);
+	printf("%s", dayInput);
+	printf("%s", yearInput);
+	
+	sscanf(yearInput, "%d", &year_leap);
+	if(year_leap % 4 == 0) {
+		if( year_leap % 100 == 0) {
+			if ( year_leap % 400 == 0) {
+				leap_year = 1;
+			}else{
+			}
+		}else {
+			leap_year = 1;
+	}
+	}
 	
 	if( strlen(monthInput) < 2 || strlen(monthInput) > 3 ){
 		//only accepts 1 & 2 digit integers and then null
@@ -27,25 +42,19 @@ int* Date_validity_checker(char monthInput[64], char dayInput[64], char yearInpu
 	}else if ( sscanf(yearInput, "%d", &year) != 1 ){
 		//does not accept other data types
 		date_output = 0;
-	}else if(year % 4 == 0) {
-		if( year % 100 == 0) {
-			if ( year % 400 == 0) {
-				leap_year = 1;
-			}else{
-			}
-		}else {
-			leap_year = 1;
-		}
-	}else if ( month < 1 || month > 12 || day < 1 || day > 31 || year < 2021){
-		    	date_output = 0;
-	}else if( (day > 29) && (month = 2) ){
+	}else if ( (month < 1) || (month > 12) || (day < 1) || (day > 31) || (year < 2021) ){
 		date_output = 0;
-	}else if( (day > 30) && (month = 4, 6, 9, 11) ){
+	}else if( (day > 29) && (month == 2) ){
+		date_output = 0;
+	}else if( (day > 30) && (month == 4, 6, 9, 11) ){
 		date_output = 0;
 	}else if( day == 29 && month == 2 && leap_year == 0 ){
 		date_output = 0;
 	}else{
 		date_output = 1;
-	}	
+	}
+	printf("%d", month);
+	printf("%d", day);
+	printf("%d", year);	
 	return date_output;		
 }
