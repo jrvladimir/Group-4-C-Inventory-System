@@ -16,6 +16,19 @@ struct element{
     float price;
 };
 
+void* search_menu(){
+	printf("Invalid ID.");
+    printf("SEARCH INVENTORY\n");
+    printf("*******************************\n");
+    printf("*[D] Search Inventory Again   *\n");
+    printf("*[M] Display Main Menu Again  *\n");
+    printf("*[X] Exit                     *\n");
+    printf("*******************************\n\n");
+    printf("Please input choice: ");
+    int module = 4;
+    choice(module);	
+}
+
 count_inventory_two(){
 	FILE* fp = fopen("Inventory_ST_NoBOM.csv", "r");
 	 if (!fp) {
@@ -135,28 +148,11 @@ void* search_inventory(){
 	int ID_two;
 	
 	if ( ID_validity_checker(addID) == 0 ){
-    	printf("Invalid ID.");
-    	printf("SEARCH INVENTORY\n");
-    	printf("*******************************\n");
-    	printf("*[D] Search Inventory Again   *\n");
-    	printf("*[M] Display Main Menu Again  *\n");
-    	printf("*[X] Exit                     *\n");
-    	printf("*******************************\n\n");
-    	printf("Please input choice: ");
-    	int module = 4;
-    	choice(module);	
+    	search_menu();
 	}else{
 		sscanf(addID, "%d", &ID_two);
 		search_inventory_two(list,count,ID_two);
-		printf("SEARCH INVENTORY\n");
-    	printf("*******************************\n");
-   		printf("*[D] Search Inventory Again   *\n");
-    	printf("*[M] Display Main Menu Again  *\n");
-    	printf("*[X] Exit                     *\n");
-    	printf("*******************************\n\n");
-    	printf("Please input choice: ");
-    	int module = 4;
-    	choice(module);
+		search_menu();
 	}
 	
 
