@@ -131,14 +131,14 @@ void* add_inventory(){
     addYear[strlen(addYear) - 1] = '\0';
 
     
-    if (ID_check = 0 || DESC_check == 0 || QTY_check == 0 || DATE_check == 0 || PRICE_check == 0){
+    if (ID_check == 0 || DESC_check == 0 || QTY_check == 0 || DATE_check == 0 || PRICE_check == 0){
     	inventory_menu();
-	}else if (ID_check = 1 && DESC_check == 1 && QTY_check == 1 && DATE_check == 1 && PRICE_check == 1){
+	}else if (ID_check == 1 && DESC_check == 1 && QTY_check == 1 && DATE_check == 1 && PRICE_check == 1){
     	printf("Item Added.");
     	fprintf(fp, "\n%s,%s,%s,-,%.2f", 
 			addID, addDescription, addQuantity, Price);
 		inventory_add();
-	}else if (ID_check = 1 && DESC_check == 1 && QTY_check == 1 && DATE_check == 2 && PRICE_check == 1){
+	}else if (ID_check == 1 && DESC_check == 1 && QTY_check == 1 && DATE_check == 2 && PRICE_check == 1){
     	printf("Item Added.");
     	fprintf(fp, "\n%s,%s,%s,%s-%02d-%02d,%.2f",
 			addID, addDescription, addQuantity, addYear, Month, Day, Price);
