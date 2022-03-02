@@ -18,10 +18,10 @@ int* Date_validity_checker(char monthInput[64], char dayInput[64], char yearInpu
 	}else if( strlen(yearInput) < 2 || strlen(yearInput) > 5 ){
 		//only accepts 4 digit integers and then null 
 		date_output = 0;
-	}else if ( sscanf(monthInput, "%d", &month) != 1 ){
+	}else if ( sscanf(monthInput, "%02d", &month) != 1 ){
 		//does not accept other data types
 		date_output = 0;
-	}else if ( sscanf(dayInput, "%d", &day) != 1 ){
+	}else if ( sscanf(dayInput, "%02d", &day) != 1 ){
 		//does not accept other data types
 		date_output = 0;
 	}else if ( sscanf(yearInput, "%d", &year) != 1 ){
