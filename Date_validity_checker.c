@@ -8,10 +8,7 @@ int* Date_validity_checker(char monthInput[64], char dayInput[64], char yearInpu
 	int date_output;
 	int day, month, year;
 	int leap_year, year_leap = 0;
-	printf("%s", monthInput);
-	printf("%s", dayInput);
-	printf("%s", yearInput);
-	
+
 	sscanf(yearInput, "%d", &year_leap);
 	if(year_leap % 4 == 0) {
 		if( year_leap % 100 == 0) {
@@ -53,8 +50,5 @@ int* Date_validity_checker(char monthInput[64], char dayInput[64], char yearInpu
 	}else{
 		date_output = 1;
 	}
-	printf("%d", month);
-	printf("%d", day);
-	printf("%d", year);	
 	return date_output;		
 }

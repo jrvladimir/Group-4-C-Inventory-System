@@ -159,7 +159,7 @@ copy_inventory(struct element product[1000], int s, int ID, char DESCRIPTION[100
     
     for ( z = 0; z < s; z++)
     {
-    	fprintf(fp, "\n%05d,%s,%d,%s,%.2f", 
+    	fprintf(fp, "%05d,%s,%d,%s,%.2f\n", 
 			product[z].id, product[z].description, product[z].quantity, product[z].date, product[z].price);
 	}
 }		
@@ -217,18 +217,18 @@ void* update_inventory(){
     		fgets(addPrice, 63, stdin);
     
 			if ( Description_validity_checker(addDescription) == 0 ){
-    			printf("Invalid Description.");
+    			printf("\nInvalid Description.");
     			DESC_check = 0;
 			}else{
-				printf("Valid Description.");
+				printf("\nValid Description.");
 				DESC_check = 1;
 			}
     
     		if ( Quantity_validity_checker(addQuantity) == 0 ){
-    			printf("Invalid Quantity.");
+    			printf("\nInvalid Quantity.");
     			QTY_check = 0;
 			}else{
-				printf("Valid Quantity.");
+				printf("\nValid Quantity.");
 				QTY_check = 1;
 			}
 		
@@ -237,24 +237,24 @@ void* update_inventory(){
 		
    		if ( Date_validity_checker(addMonth, addDay, addYear) == 0 ){
     		if (Expiry_date_checker(addMonth, addDay, addYear) == 1){
-    			printf("No Expiration.");
+    			printf("\nNo Expiration.");
     			DATE_check = 1;
 			}else{
-				printf("Invalid date.");
+				printf("\nInvalid date.");
 				DATE_check = 0;
 			}	
 		}else{
-			printf("Valid Date.");
+			printf("\nValid Date.");
 			DATE_check = 2;
 			sscanf(addDay, "%d", &Day);
 			sscanf(addMonth, "%d", &Month);
 		}
 	
 		if ( Price_validity_checker(addPrice) == 0 ){
-    		printf("Invalid Price.");
+    		printf("\nInvalid Price.");
     		PRICE_check = 0;
 		}else{
-			printf("Valid Price.");
+			printf("\nValid Price.");
 			PRICE_check = 1;
 			sscanf(addPrice, "%f", &Price);
 		}
@@ -269,11 +269,11 @@ void* update_inventory(){
     	if (DESC_check == 0 || QTY_check == 0 || DATE_check == 0 || PRICE_check == 0){
     		update_menu();
 		}else if (DESC_check == 1 && QTY_check == 1 && DATE_check == 1 && PRICE_check == 1){
-    		printf("Item Updated.");
+    		printf("\nItem Updated.");
 			copy_inventory(list,count,ID_three,addDescription,Quantity,"-",Price);
 			inventory_add();
 		}else if (DESC_check == 1 && QTY_check == 1 && DATE_check == 2 && PRICE_check == 1){
-    		printf("Item Updated.");
+    		printf("\nItem Updated.");
     		sprintf(Date, "%s-%02d-%02d", addYear, Month, Day);
 			copy_inventory(list,count,ID_three,addDescription,Quantity,Date,Price);
 			inventory_add();

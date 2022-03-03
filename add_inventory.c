@@ -19,8 +19,7 @@ void inventory_menu(){
 }
 
 void inventory_add(){
-	printf("ADD INVENTORY \n");
-    printf("*******************************\n");
+    printf("\n*******************************\n");
     printf("*[X] Exit                     *\n");
     printf("*******************************\n\n");
     printf("Please input choice: ");
@@ -67,33 +66,33 @@ void* add_inventory(){
     int ID_check, DESC_check, QTY_check, DATE_check, PRICE_check;
     
     if ( ID_validity_checker(addID) == 0 ){
-    	printf("Invalid ID.");
+    	printf("\nInvalid ID.");
     	ID_check = 0;
 	}else{
 		if (ID_duplication_checker(addID) == 1){
-			printf("Duplicate ID.");
+			printf("\nDuplicate ID.");
 			ID_check = 0;
 		}else{
-			printf("Valid ID.");
+			printf("\nValid ID.");
 			ID_check = 1;
 		}
 	}
 	
 	
 	if ( Description_validity_checker(addDescription) == 0 ){
-    	printf("Invalid Description.");
+    	printf("\nInvalid Description.");
     	DESC_check = 0;
 	}else{
-		printf("Valid Description.");
+		printf("\nValid Description.");
 		DESC_check = 1;
 
 	}
     
     if ( Quantity_validity_checker(addQuantity) == 0 ){
-    	printf("Invalid Quantity.");
+    	printf("\nInvalid Quantity.");
     	QTY_check = 0;
 	}else{
-		printf("Valid Quantity.");
+		printf("\nValid Quantity.");
 		QTY_check = 1;
 	}
     
@@ -101,10 +100,10 @@ void* add_inventory(){
 	
     if ( Date_validity_checker(addMonth, addDay, addYear) == 0 ){
     	if (Expiry_date_checker(addMonth, addDay, addYear) == 1){
-    		printf("No Expiration.");
+    		printf("\nNo Expiration.");
     		DATE_check = 1;
 		}else{
-			printf("Invalid date.");
+			printf("\nInvalid date.");
 			DATE_check = 0;
 		}	
 	}else{
@@ -117,10 +116,10 @@ void* add_inventory(){
 	float Price;
 	
 	if ( Price_validity_checker(addPrice) == 0 ){
-    	printf("Invalid Price.");
+    	printf("\nInvalid Price.");
     	PRICE_check = 0;
 	}else{
-		printf("Valid Price.");
+		printf("\nValid Price.");
 		PRICE_check = 1;
 		sscanf(addPrice, "%f", &Price);
 	}
@@ -134,12 +133,12 @@ void* add_inventory(){
     if (ID_check == 0 || DESC_check == 0 || QTY_check == 0 || DATE_check == 0 || PRICE_check == 0){
     	inventory_menu();
 	}else if (ID_check == 1 && DESC_check == 1 && QTY_check == 1 && DATE_check == 1 && PRICE_check == 1){
-    	printf("Item Added.");
+    	printf("\nItem Added.");
     	fprintf(fp, "\n%s,%s,%s,-,%.2f", 
 			addID, addDescription, addQuantity, Price);
 		inventory_add();
 	}else if (ID_check == 1 && DESC_check == 1 && QTY_check == 1 && DATE_check == 2 && PRICE_check == 1){
-    	printf("Item Added.");
+    	printf("\nItem Added.");
     	fprintf(fp, "\n%s,%s,%s,%s-%02d-%02d,%.2f",
 			addID, addDescription, addQuantity, addYear, Month, Day, Price);
 		inventory_add();
