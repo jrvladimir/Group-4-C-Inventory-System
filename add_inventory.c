@@ -7,7 +7,7 @@
 
 
 void inventory_menu(){
-	printf("ADD INVENTORY \n");
+	printf("\nADD INVENTORY \n");
     printf("*******************************\n");
     printf("*[A] Add Inventory Again      *\n");
     printf("*[M] Display Main Menu Again  *\n");

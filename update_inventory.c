@@ -191,7 +191,8 @@ void* update_inventory(){
 	char Date[100];
 	
 	if ( ID_validity_checker(addID) == 0 ){
-    	update_menu();
+    	printf("\nInvalid ID.\n");
+		update_menu();
 	}else{
 		sscanf(addID, "%d", &ID_three);
 		if ( search_inventory_three(list,count,ID_three) == 1){
