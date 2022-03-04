@@ -6,11 +6,12 @@
 
 int* Quantity_validity_checker(char userInput[64]){
 	int num = -1;
-	int i, flag = 0;
+	int i = 0;
+	int flag = 0;
 	int quantity_output = 0;
 	
 	//checks if the input is float
-	int y;
+	int y = 0;
 
 
 	while (userInput[y++] != '\0'){

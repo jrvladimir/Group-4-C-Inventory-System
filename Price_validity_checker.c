@@ -6,7 +6,8 @@
 
 int* Price_validity_checker(char PriceInput[64]){
 	float num = 0;
-	int y, flag= 0;
+	int y = 0;
+	int flag= 0;
 	int price_output;
 
 	

@@ -5,11 +5,13 @@
 #include "tools.h"
 
 int* Date_validity_checker(char monthInput[64], char dayInput[64], char yearInput[64]){
-	int date_output;
+	int date_output = 0;
 	int day, month, year;
-	int leap_year, year_leap = 0;
+	int leap_year = 0;
+	int year_leap = 0;
 
-	int y, flag = 0;
+	int y = 0; 
+	int flag = 0;
 
 
 	while (yearInput[y++] != '\0'){

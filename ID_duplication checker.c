@@ -109,6 +109,8 @@ int* ID_duplication_checker(char userInput[64]){
 		sscanf(userInput, "%d", &num);
 
 
+
+		
 		if ( duplicate_check(list,count,num) == 1){
 			duplicate_output = 1;
 		}
