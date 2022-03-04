@@ -29,15 +29,17 @@ void inventory_add(){
 
 
 void* add_inventory(){
-
+	int x = 1;
 	
-	FILE* fp = fopen("Inventory_ST_NoBOM.csv", "a+");
+	FILE* fp = fopen("Inventory_ST_NoBOM.csv", "r");
 	 if (!fp) {
         // Error in file opening
-        printf("Can't open file\n");
-        inventory_menu();
+        x = 0;
     }
-    	
+    fclose(fp);	
+	
+	
+	FILE* ffp = fopen("Inventory_ST_NoBOM.csv", "a+");
 	printf("ADD INVENTORY \n");
     
     char addID[64], addDescription[64], addQuantity[64], addPrice[64], addMonth[64], addDay[64], addYear[64];
@@ -134,16 +136,22 @@ void* add_inventory(){
     	inventory_menu();
 	}else if (ID_check == 1 && DESC_check == 1 && QTY_check == 1 && DATE_check == 1 && PRICE_check == 1){
     	printf("\nItem Added.");
-    	fprintf(fp, "\n%s,%s,%s,-,%.2f", 
+    	if (x == 1){
+    		fprintf(ffp, "\n");
+		}
+    	fprintf(ffp, "%s,%s,%s,-,%.2f", 
 			addID, addDescription, addQuantity, Price);
 		inventory_add();
 	}else if (ID_check == 1 && DESC_check == 1 && QTY_check == 1 && DATE_check == 2 && PRICE_check == 1){
     	printf("\nItem Added.");
-    	fprintf(fp, "\n%s,%s,%s,%s-%02d-%02d,%.2f",
+    	if (x == 1){
+    		fprintf(ffp, "\n");
+		}
+    	fprintf(ffp, "%s,%s,%s,%s-%02d-%02d,%.2f",
 			addID, addDescription, addQuantity, addYear, Month, Day, Price);
 		inventory_add();
     }
-    fclose(fp);
-} 
+    fclose(ffp);
+	}
 
 

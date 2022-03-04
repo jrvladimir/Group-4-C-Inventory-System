@@ -32,7 +32,7 @@ count_inventory_three(){
 	FILE* fp = fopen("Inventory_ST_NoBOM.csv", "r");
 	 if (!fp) {
         // Error in file opening
-        printf("Can't open file\n");
+
     }
 	char buffer[1024];
         int row = 0;
@@ -47,7 +47,7 @@ into_structure_three(struct element product[1000]){
 	FILE* fp = fopen("Inventory_ST_NoBOM.csv", "r");
 	 if (!fp) {
         // Error in file opening
-        printf("Can't open file\n");
+
     }
 	char buffer[1024];
   
@@ -154,7 +154,7 @@ copy_inventory(struct element product[1000], int s, int ID, char DESCRIPTION[100
 	FILE* fp = fopen("Inventory_ST_NoBOM.csv", "w");
 	if (!fp) {
         // Error in file opening
-        printf("Can't open file\n");
+
     }
     
     for ( z = 0; z < s; z++)
@@ -171,11 +171,6 @@ void* update_inventory(){
 	struct element list[1000];
 	into_structure_three(list);
 	
-	printf("SEARCH INVENTORY \n");
-	char addID[64];
-	printf("\nEnter the Inventory ID: ");
-    fgets(addID, 63, stdin);
-	
 	int ID_three;
 	
     int DESC_check, QTY_check, DATE_check, PRICE_check;	
@@ -189,6 +184,26 @@ void* update_inventory(){
 	int Quantity;
 	
 	char Date[100];
+	
+	
+	int x = 1;
+	
+	FILE* fp = fopen("Inventory_ST_NoBOM.csv", "r");
+	 if (!fp) {
+        // Error in file opening
+        x = 0;
+        printf("\nNo entries yet.\n\n");
+        update_menu();
+    }
+    fclose(fp);
+	
+	if (x==1){
+		printf("SEARCH INVENTORY \n");
+	char addID[64];
+	printf("\nEnter the Inventory ID: ");
+    fgets(addID, 63, stdin);
+	
+	
 	
 	if ( ID_validity_checker(addID) == 0 ){
     	printf("\nInvalid ID.\n");
@@ -281,4 +296,7 @@ void* update_inventory(){
     	}
 	}	
 	}
+	}
+	
+	
 }
