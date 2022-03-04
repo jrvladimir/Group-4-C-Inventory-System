@@ -33,7 +33,7 @@ count_inventory_two(){
 	FILE* fp = fopen("Inventory_ST_NoBOM.csv", "r");
 	 if (!fp) {
         // Error in file opening
-        printf("Can't open file\n");
+
     }
 	char buffer[1024];
         int row = 0;
@@ -48,7 +48,7 @@ into_structure_two(struct element product[1000]){
 	FILE* fp = fopen("Inventory_ST_NoBOM.csv", "r");
 	 if (!fp) {
         // Error in file opening
-        printf("Can't open file\n");
+
     }
 	char buffer[1024];
   
@@ -139,13 +139,26 @@ void* search_inventory(){
 	int count = count_inventory_two();
 	struct element list[1000];
 	into_structure_two(list);
+	int ID_two;
 	
-	printf("SEARCH INVENTORY \n");
+	int x = 1;
+	
+	FILE* fp = fopen("Inventory_ST_NoBOM.csv", "r");
+	 if (!fp) {
+        // Error in file opening
+        x = 0;
+        printf("No Entries yet.\n\n");
+        search_menu();
+    }
+    fclose(fp);	
+	
+	if (x==1){
+		printf("SEARCH INVENTORY \n");
 	char addID[64];
 	printf("\nEnter the Inventory ID: ");
     fgets(addID, 63, stdin);
 	
-	int ID_two;
+	
 	
 	if ( ID_validity_checker(addID) == 0 ){
 		printf("\nInvalid ID.\n");
@@ -154,6 +167,7 @@ void* search_inventory(){
 		sscanf(addID, "%d", &ID_two);
 		search_inventory_two(list,count,ID_two);
 		search_menu();
+	}
 	}
 	
 
