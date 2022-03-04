@@ -90,7 +90,7 @@ display_inventory(struct element product[1000], int s){
 	
     for (i = 0; i < s; i++)
     {
-        printf("%d", product[i].id);
+        printf("%05d", product[i].id);
   		printf("  %s", product[i].description);
   		printf("   %d", product[i].quantity);
   		if (product[i].quantity < 10){

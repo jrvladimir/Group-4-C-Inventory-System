@@ -17,7 +17,7 @@ struct element{
 };
 
 void* search_menu(){
-	printf("Invalid ID.");
+	// printf("Invalid ID.");
     printf("SEARCH INVENTORY\n");
     printf("*******************************\n");
     printf("*[D] Search Inventory Again   *\n");
@@ -148,6 +148,7 @@ void* search_inventory(){
 	int ID_two;
 	
 	if ( ID_validity_checker(addID) == 0 ){
+		printf("\nInvalid ID.\n");
     	search_menu();
 	}else{
 		sscanf(addID, "%d", &ID_two);
