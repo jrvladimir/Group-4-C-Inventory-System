@@ -133,14 +133,14 @@ int* search_inventory_three(struct element product[1000], int s, int ID){
 	return z;	
 }
 
-copy_inventory(struct element product[1000], int s, int ID, char DESCRIPTION[100], int QUANTITY, char DATE[100], float PRICE){
+copy_inventory(struct element product[1000], int s, int ID, int IDD, char DESCRIPTION[100], int QUANTITY, char DATE[100], float PRICE){
 	int i;
 	
     	for (i = 0; i < s; i++)
     {
 	    	if( ID ==  product[i].id)
 			{
-	        product[i].id = ID;
+	        product[i].id = IDD;
 	  		strcpy(product[i].description,DESCRIPTION);
 	  		product[i].quantity = QUANTITY;
 	  		strcpy(product[i].date,DATE);
@@ -159,7 +159,7 @@ copy_inventory(struct element product[1000], int s, int ID, char DESCRIPTION[100
     
     for ( z = 0; z < s; z++)
     {
-    	fprintf(fp, "%05d,%s,%d,%s,%.2f\n", 
+    	fprintf(fp, "\"%05d\",\"%s\",\"%d\",\"%s\",\"%.2f\"\n", 
 			product[z].id, product[z].description, product[z].quantity, product[z].date, product[z].price);
 	}
 }		
@@ -173,15 +173,15 @@ void* update_inventory(){
 	
 	int ID_three;
 	
-    int DESC_check, QTY_check, DATE_check, PRICE_check;	
+    int ID_check, DESC_check, QTY_check, DATE_check, PRICE_check;	
 	
 	int Day, Month;  
 	
 	float Price; 
 
-	char addDescription[64], addQuantity[64], addPrice[64], addMonth[64], addDay[64], addYear[64];
+	char addID[64], addDescription[64], addQuantity[64], addPrice[64], addMonth[64], addDay[64], addYear[64];
 	
-	int Quantity;
+	int Quantity, ID_four;
 	
 	char Date[100];
 	
@@ -199,20 +199,22 @@ void* update_inventory(){
 	
 	if (x==1){
 		printf("SEARCH INVENTORY \n");
-	char addID[64];
+	char searchID[64];
 	printf("\nEnter the Inventory ID: ");
-    fgets(addID, 63, stdin);
+    fgets(searchID, 63, stdin);
 	
 	
-	
-	if ( ID_validity_checker(addID) == 0 ){
+	if ( ID_validity_checker(searchID) == 0 ){
     	printf("\nInvalid ID.\n");
 		update_menu();
 	}else{
-		sscanf(addID, "%d", &ID_three);
+		sscanf(searchID, "%d", &ID_three);
 		if ( search_inventory_three(list,count,ID_three) == 1){
 			update_menu();
 		}else{
+			
+			printf("\nEnter the Inventory ID: ");
+    		fgets(addID, 63, stdin);
 			    
     		printf("\nEnter the Description: ");
     		fgets(addDescription, 63, stdin);
@@ -248,7 +250,18 @@ void* update_inventory(){
 				QTY_check = 1;
 			}
 		
-		
+		if ( ID_validity_checker(addID) == 0 ){
+    		printf("\nInvalid ID.");
+    		ID_check = 0;
+		}else{
+			if (ID_duplication_checker(addID) == 1){
+				printf("\nDuplicate ID.");
+				ID_check = 0;
+			}else{
+				printf("\nValid ID.");
+				ID_check = 1;
+			}
+		}
 
 		
    		if ( Date_validity_checker(addMonth, addDay, addYear) == 0 ){
@@ -281,17 +294,18 @@ void* update_inventory(){
     	addYear[strlen(addYear) - 1] = '\0';
 		
 		sscanf(addQuantity, "%d", &Quantity);
+		sscanf(addID, "%d", &ID_four);
     
-    	if (DESC_check == 0 || QTY_check == 0 || DATE_check == 0 || PRICE_check == 0){
+    	if ( ID_check == 0 || DESC_check == 0 || QTY_check == 0 || DATE_check == 0 || PRICE_check == 0){
     		update_menu();
-		}else if (DESC_check == 1 && QTY_check == 1 && DATE_check == 1 && PRICE_check == 1){
+		}else if ( ID_check == 1 && DESC_check == 1 && QTY_check == 1 && DATE_check == 1 && PRICE_check == 1){
     		printf("\nItem Updated.");
-			copy_inventory(list,count,ID_three,addDescription,Quantity,"-",Price);
+			copy_inventory(list,count,ID_three,ID_four,addDescription,Quantity,"-",Price);
 			inventory_add();
-		}else if (DESC_check == 1 && QTY_check == 1 && DATE_check == 2 && PRICE_check == 1){
+		}else if ( ID_check == 1 && DESC_check == 1 && QTY_check == 1 && DATE_check == 2 && PRICE_check == 1){
     		printf("\nItem Updated.");
     		sprintf(Date, "%s-%02d-%02d", addYear, Month, Day);
-			copy_inventory(list,count,ID_three,addDescription,Quantity,Date,Price);
+			copy_inventory(list,count,ID_three,ID_four,addDescription,Quantity,Date,Price);
 			inventory_add();
     	}
 	}	
